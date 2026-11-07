@@ -9,6 +9,14 @@
 @source "../src";
 @import "tw-animate-css";
 
+@font-face {
+  font-family: "Blonde";
+  src: url("/fonts/Blonde_Font.otf") format("opentype");
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
 @custom-variant dark (&:is(.dark *));
 
 /*
@@ -100,35 +108,132 @@
   --shadow-interactive: 0 12px 28px oklch(0.2 0.04 140 / 18%);
 }
 @keyframes enter-page {
-  from { opacity: 0; transform: translateY(12px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 main {
   animation: enter-page 420ms ease-out both;
   background-image: var(--gradient-page);
 }
-main a, main button {
-  transition: transform 220ms ease, background-color 220ms ease, color 220ms ease, box-shadow 220ms ease;
+main a,
+main button {
+  transition:
+    transform 220ms ease,
+    background-color 220ms ease,
+    color 220ms ease,
+    box-shadow 220ms ease;
 }
-main a.bg-card, main button.bg-card {
+main a.bg-card,
+main button.bg-card {
   background-image: var(--gradient-card);
 }
-main a.bg-card:hover, main button.bg-card:hover {
+main a.bg-card:hover,
+main button.bg-card:hover {
   box-shadow: var(--shadow-interactive);
   transform: translateY(-4px);
 }
-main a:active, main button:active { transform: scale(0.98); }
-.ausculta-point { transition: background-color 180ms ease, box-shadow 180ms ease; }
-.ausculta-point:hover { background-color: var(--accent); box-shadow: 0 0 0 4px var(--input); }
+main a:active,
+main button:active {
+  transform: scale(0.98);
+}
+.ausculta-point {
+  transition:
+    background-color 180ms ease,
+    box-shadow 180ms ease;
+}
+.ausculta-point:hover {
+  background-color: var(--accent);
+  box-shadow: 0 0 0 4px var(--input);
+}
+
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  20%,
+  60% {
+    transform: translateX(-6px);
+  }
+  40%,
+  80% {
+    transform: translateX(6px);
+  }
+}
+.animate-shake {
+  animation: shake 0.35s ease-in-out;
+}
+
+@keyframes sound-bar {
+  0%,
+  100% {
+    height: 4px;
+  }
+  50% {
+    height: 24px;
+  }
+}
+.animate-sound-bar-1 {
+  animation: sound-bar 0.8s ease-in-out infinite alternate;
+}
+.animate-sound-bar-2 {
+  animation: sound-bar 0.6s ease-in-out infinite alternate 0.15s;
+}
+.animate-sound-bar-3 {
+  animation: sound-bar 0.9s ease-in-out infinite alternate 0.3s;
+}
+.animate-sound-bar-4 {
+  animation: sound-bar 0.7s ease-in-out infinite alternate 0.1s;
+}
+.animate-sound-bar-5 {
+  animation: sound-bar 0.85s ease-in-out infinite alternate 0.25s;
+}
+
+@keyframes pulse-ring {
+  0% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.9;
+  }
+  50% {
+    transform: translate(-50%, -50%) scale(1.35);
+    opacity: 0.3;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.9;
+  }
+}
+.pulse-detection {
+  animation: pulse-ring 1.4s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
 @media (prefers-reduced-motion: reduce) {
-  main { animation: none; }
-  main a, main button, .ausculta-point { transition: none; }
+  main {
+    animation: none;
+  }
+  main a,
+  main button,
+  .ausculta-point {
+    transition: none;
+  }
 }
 @theme inline {
   --color-skin: var(--skin);
   --color-skin-shade: var(--skin-shade);
   --font-serif: "Source Serif 4", Georgia, serif;
   --font-brand: "Nunito", sans-serif;
+  --font-blonde: "Blonde", cursive, sans-serif;
+}
+
+.font-blonde {
+  font-family: "Blonde", cursive, sans-serif;
+  word-spacing: 0.55em;
+  letter-spacing: 0.04em;
 }
 @layer base {
   * {

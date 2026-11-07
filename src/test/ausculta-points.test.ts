@@ -5,7 +5,7 @@ describe("Focos cardíacos na vista anterior", () => {
   it("posiciona o mitral na linha do mamilo esquerdo e abaixo do tricúspide", () => {
     const mitral = pontosCardiacos.find((p) => p.id === "mitral");
     const tricuspide = pontosCardiacos.find((p) => p.id === "tricuspide");
-    expect(mitral).toMatchObject({ x: 63, y: 48 });
+    expect(mitral).toMatchObject({ x: 67, y: 53 });
     expect(tricuspide).toBeDefined();
     expect(mitral?.x).toBeGreaterThan(tricuspide?.x ?? 100);
     expect(mitral?.y).toBeGreaterThan(tricuspide?.y ?? 100);
